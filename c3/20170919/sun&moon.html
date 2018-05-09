@@ -1,0 +1,111 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS日食与太阳碰撞</title>
+
+
+<style>
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.universe {
+  width: 100vw;
+  height: 100vh;
+  background: #030613;
+  display: block;
+  position: relative;
+}
+
+.universe:before {
+  content: "";
+  box-shadow: 10vw 1vh #fff, 14vw 29vh 2px #FFF, 23vw 34vh 1px #FFF, 1vw 99vh 1px #FFF, 20vw 80vh #FFF, 90vw 10vh 2px #fff, 55vw 9vh #FFF, 24vw 4vh 1px #FFF, 50vw 99vh 1px #FFF, 74vw 40vh 1px #FFF, 80vw 9vh 1px #FFF, 20vw 80vh #FFF, 85vw 78vh #fff;
+  width: 4px;
+  height: 4px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.universe:after {
+  content: "";
+  box-shadow: 37vw 78vh #fff, 17vw 69vh #FFF, 68vw 4vh 1px #FFF, 98vw 9vh 1px #FFF, 45vw 67vh #FFF, 95vw 1vh 2px #fff, 35vw 75vh 2px #FFF, 44vw 47vh 1px #FFF, 54vw 5vh 1px #FFF, 22vw 29vh 1px #FFF, 39vw 71vh 1px #FFF, 11vw 11vh #FFF, 88vw 82vh #fff;
+  width: 2px;
+  height: 2px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.sun {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background: #cfcfd4;
+  box-shadow: 0 0 60px gold, 0 0 100px #b9a018, inset 0 5px 35px 53px #dbdbdb, inset 48px 8px 34px 25px #c4c4c4;
+  left: calc(50% - 100px);
+  top: calc(50% - 100px);
+  position: absolute;
+  animation: sunFreakOut 5s 7.1s linear  forwards;
+}
+
+.moon {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.99);
+  box-shadow: inset 5px 1px 10px -8px #d4d4d6;
+  top: calc(40% - 100px);
+  position: absolute;
+  z-index: 5;
+  transform: translateX(100vw);
+  animation: move 20s ease-in-out   forwards;
+}
+
+@keyframes move {
+  0% {
+      /*transform: translateX(100vw);*/
+  }
+  50%{
+    width: 200px;
+    height: 200px;
+    transform: translateX(calc(50vw - 100px));
+    box-shadow: inset 20px 1px 35px -15px #d4d4d6;
+    top: calc(50% - 100px);
+  }
+  100% {
+    width: 50px;
+    height: 50px;
+    transform: translateX(calc(-1vw - 60px));
+    top: calc(40% - 100px);
+    box-shadow: inset -5px 1px 10px -8px #d4d4d6;
+  }
+}
+
+@keyframes sunFreakOut {
+  0% {
+    box-shadow: 0 0 60px gold, 0 0 100px #b9a018, inset 0 5px 35px 53px #dbdbdb, inset 48px 8px 34px 25px #c4c4c4;
+  }
+  70% {
+    box-shadow: 0 0 50px #e30000, 0 0 0px #b91818, inset 0 5px 35px 53px #dbdbdb, inset 48px 8px 34px 25px #c4c4c4;
+  }
+  100% {
+    box-shadow: 0 0 60px gold, 0 0 100px #b9a018, inset 0 5px 35px 53px #dbdbdb, inset 48px 8px 34px 25px #c4c4c4;
+  }
+}
+</style>
+</head>
+<body>
+<div class="universe">
+  <div class="sun"></div>
+  <div class="moon"></div>
+</div>
+
+</body>
+</html>
